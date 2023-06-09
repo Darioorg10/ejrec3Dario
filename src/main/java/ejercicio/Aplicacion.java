@@ -74,11 +74,7 @@ public class Aplicacion {
                 }
                 case 4 -> {
                     
-                    int[][] matriz = leerFichero1("./matrizP(1).txt");
-                    for (int i = 0; i < matriz.length; i++) {
-                        Arrays.sort(matriz[i]);
-                    }
-                    
+                    int[][] matriz = leerFichero1("./matrizP(1).txt");                    
                     int[][] ordenada = mayorAMenor(matriz);
                     imprimirMatriz(ordenada);
                     
@@ -198,24 +194,23 @@ public class Aplicacion {
     
     
     // Método para ordenar cada fila de la matriz de mayor a menor (caso 4)
-    private static int[][] mayorAMenor(int[][] matriz){
-        
-        int[][]ordenada = new int[matriz.length][];
-        int contador = 0;
-        
+    private static int[][] mayorAMenor(int[][] matriz) {
+
+        int[][] ordenada = new int[matriz.length][];
+
         for (int i = 0; i < matriz.length; i++) {
-            ordenada[contador] = new int[matriz[i].length];
-            for (int j = 0; j < matriz[i].length; j--) {
-                ordenada[contador][j] = matriz[i][j];
-                contador++;
+            ordenada[i] = new int[matriz[i].length];
+
+            int[] filaTemporal = Arrays.copyOf(matriz[i], matriz[i].length);
+
+            Arrays.sort(filaTemporal);
+            for (int j = 0; j < filaTemporal.length; j++) {
+                ordenada[i][j] = filaTemporal[filaTemporal.length - 1 - j];
             }
-            contador = 0;
         }
-        
-        
-        
+
         return ordenada;
-    
+
     }
     
 }
