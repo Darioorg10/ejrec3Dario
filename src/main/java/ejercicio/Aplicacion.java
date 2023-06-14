@@ -165,6 +165,18 @@ public class Aplicacion {
             contador++;
         }
         
+        /* Otra forma 
+        int[][] inversa = new int[matriz.length][];
+
+        for (int i = 0; i < matriz.length; i++) {
+            inversa[i] = matriz[i].clone(); // Copiamos la fila de la matriz original
+        }
+
+        Collections.reverse(Arrays.asList(inversa)); // Invertimos el orden de las filas
+
+        return inversa;
+        */
+        
         
         return inversa;
     
