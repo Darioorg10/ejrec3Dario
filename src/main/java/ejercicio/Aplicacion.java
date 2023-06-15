@@ -156,8 +156,8 @@ public class Aplicacion {
         int contador = 0;
         
         // Recorrer la i descendentemente y la j ascendentemente
-        for (int i = matriz.length-1; i >= 0; i--) {
-            inversa[contador] = new int[matriz[i].length];
+        for (int i = matriz.length-1; i >= 0; i--) { // Con esto estamos empezando a leer desde la última fila
+            inversa[contador] = new int[matriz[i].length]; // Con el contador es como si empezaras con i=0, es decir la recorrieras normal
             
             for (int j = 0; j < matriz[i].length; j++) {
                 inversa[contador][j] = matriz[i][j];
@@ -165,7 +165,7 @@ public class Aplicacion {
             contador++;
         }
         
-        /* Otra forma 
+        /* Otra forma ( no estoy seguro si funciona) 
         int[][] inversa = new int[matriz.length][];
 
         for (int i = 0; i < matriz.length; i++) {
@@ -177,6 +177,23 @@ public class Aplicacion {
         return inversa;
         */
         
+        /*
+        Forma con constante
+        int[][] inversa = new int[matriz.length][];
+        
+        
+        // Recorrer la i descendentemente y la j ascendentemente
+        for (int i = matriz.length-1; i >= 0; i--) { 
+        
+            final int CONS_INVERSA = matriz[i].length;
+            inversa[CONS_INVERSA - i] = new int[matriz[i].length]; // Así al restar la inversa que es igual a la i, queda en 0
+            
+            for (int j = 0; j < matriz[i].length; j++) {
+                inversa[CONS_INVERSA][j] = matriz[i][j];
+            }
+            contador++;
+        }
+        */
         
         return inversa;
     
@@ -213,7 +230,7 @@ public class Aplicacion {
         for (int i = 0; i < matriz.length; i++) {
             ordenada[i] = new int[matriz[i].length];
 
-            int[] filaTemporal = Arrays.copyOf(matriz[i], matriz[i].length);
+            int[] filaTemporal = Arrays.copyOf(matriz[i], matriz[i].length); // Para no fastidiar la información hacemos la copia
 
             Arrays.sort(filaTemporal);
             for (int j = 0; j < filaTemporal.length; j++) {
